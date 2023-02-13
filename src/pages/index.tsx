@@ -229,6 +229,9 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
             <div className="basis-1/3 flex-1 ">
+            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Movie Fight
+              </p>
               <Link href="https://moviefightapi.netlify.app/" target="_blank">
                 <Image
                   alt=""
@@ -242,6 +245,9 @@ export default function Home() {
               </p>
             </div>
             <div className="basis-1/3 flex-1">
+            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Ecommerce Application using React/Redux and Node
+              </p>
               <Link href="https://ecommerce-node.netlify.app/" target="_blank">
                 <Image
                   alt=""
@@ -256,6 +262,9 @@ export default function Home() {
               </p>
             </div>
             <div className="basis-1/3 flex-1">
+            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                A Maze game using matter.js library
+              </p>
               <Link href="https://matterjslib.netlify.app/" target="_blank">
                 <Image
                   alt=""
@@ -270,6 +279,9 @@ export default function Home() {
               </p>
             </div>
             <div className="basis-1/3 flex-1">
+            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Website design for a fictional accounting company
+              </p>
               <Link href="https://projectedgeledger.netlify.app/#home" target="_blank">
                 <Image
                   alt=""
@@ -283,6 +295,9 @@ export default function Home() {
               </p>
             </div>
             <div className="basis-1/3 flex-1">
+            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                A secret message sharing app
+              </p>
               <Link href="https://messagesharing.netlify.app/" target="_blank">
                 <Image
                   alt=""
@@ -296,6 +311,9 @@ export default function Home() {
               </p>
             </div>
             <div className="basis-1/3 flex-1">
+            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                my photo gallery
+              </p>
               <Link href="https://unsplash.com/@saugat151" target="_blank">
                 <Image
                   alt=""
