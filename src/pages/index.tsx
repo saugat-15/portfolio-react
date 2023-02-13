@@ -122,7 +122,7 @@ export default function Home() {
             </h3>
             <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
               Web and App developer providing services for programming needs.
-              Join me down below and let's get kraken!
+              Join me down below and lets get kraken!
             </p>
             <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
               <Link href="https://github.com/saugat-15">
@@ -156,7 +156,7 @@ export default function Home() {
               As a driven web developer, I am dedicated to delivering
               high-quality results and am constantly seeking new challenges. My
               skills in the latest technologies, combined with a passion for
-              problem-solving, make me a valuable asset to any team. Let's work
+              problem-solving, make me a valuable asset to any team. Lets work
               together to create innovative and effective web solutions.
             </p>
           </div>
@@ -167,7 +167,7 @@ export default function Home() {
                 Code your dream project
               </h3>
               <p className="py-2">
-                Do you have an idea for your next great website? Let's make it a
+                Do you have an idea for your next great website? Lets make it a
                 reality.
               </p>
               <h4 className="py-4 text-teal-600">Design Tools I Use</h4>
