@@ -40,7 +40,7 @@ export default function Home() {
     );
   };
 
-  function animateCircles(event) {
+  function animateCircles(event : any) {
     var circle = document.createElement("div");
     circle.setAttribute("class", "circle");
     document.body.appendChild(circle);
@@ -232,8 +232,7 @@ export default function Home() {
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  width={"100%"}
-                  height={"100%"}
+                  
                   layout="responsive"
                   src={movieFight}
                 />
@@ -245,8 +244,7 @@ export default function Home() {
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  width={"100%"}
-                  height={"100%"}
+                  
                   layout="responsive"
                   src={ecommerce}
                 />
@@ -258,8 +256,7 @@ export default function Home() {
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  width={"100%"}
-                  height={"100%"}
+                  
                   layout="responsive"
                   src={maze}
                 />
@@ -271,8 +268,7 @@ export default function Home() {
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  width={"100%"}
-                  height={"100%"}
+                  
                   layout="responsive"
                   src={ledger}
                 />
@@ -284,8 +280,7 @@ export default function Home() {
                 <Image
                   alt=""
                   className="rounded-lg object-fit"
-                  width={50}
-                  height={50}
+                  
                   layout="responsive"
                   src={secret}
                 />
@@ -297,8 +292,7 @@ export default function Home() {
                 <Image
                   alt=""
                   className="rounded-lg object-fit"
-                  width={50}
-                  height={50}
+                  
                   layout="responsive"
                   src={unsplash}
                 />
