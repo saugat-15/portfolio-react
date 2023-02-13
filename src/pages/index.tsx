@@ -6,7 +6,14 @@ import {
   AiFillYoutube,
 } from "react-icons/ai";
 import { BsFillMoonStarsFill } from "react-icons/bs";
-import {AiFillHome, AiFillGithub, AiOutlineMail, AiOutlinePhone,  AiFillInstagram, AiFillDatabase } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiFillGithub,
+  AiOutlineMail,
+  AiOutlinePhone,
+  AiFillInstagram,
+  AiFillDatabase,
+} from "react-icons/ai";
 import { IoLogoNodejs } from "react-icons/io";
 import { BsLightbulbFill } from "react-icons/bs";
 import { SiMongodb, SiTypescript, SiNextdotjs } from "react-icons/si";
@@ -40,7 +47,7 @@ export default function Home() {
     );
   };
 
-  function animateCircles(event : any) {
+  function animateCircles(event: any) {
     var circle = document.createElement("div");
     circle.setAttribute("class", "circle");
     document.body.appendChild(circle);
@@ -87,23 +94,26 @@ export default function Home() {
             </h1>
             <ul className="flex items-center">
               <li>
-                {darkMode ? <BsLightbulbFill
-                  onClick={() => {
-                    setDarkMode(!darkMode),
-                      console.log(`dark mode checked: ${darkMode}`);
-                  }}
-                  className="cursor-pointer text-3xl hover:text-teal-600 dark:hover:text-yellow-500"/> :
-                <BsFillMoonStarsFill
-                  onClick={() => {
-                    setDarkMode(!darkMode),
-                      console.log(`dark mode checked: ${darkMode}`);
-                  }}
-                  className="cursor-pointer text-2xl dark:hover:text-teal-600 hover:text-yellow-500"
-                />}
+                {darkMode ? (
+                  <BsLightbulbFill
+                    onClick={() => {
+                      setDarkMode(!darkMode),
+                        console.log(`dark mode checked: ${darkMode}`);
+                    }}
+                    className="cursor-pointer text-3xl hover:text-teal-600 dark:hover:text-yellow-500"
+                  />
+                ) : (
+                  <BsFillMoonStarsFill
+                    onClick={() => {
+                      setDarkMode(!darkMode),
+                        console.log(`dark mode checked: ${darkMode}`);
+                    }}
+                    className="cursor-pointer text-2xl dark:hover:text-teal-600 hover:text-yellow-500"
+                  />
+                )}
               </li>
               <li>
                 <a
-                 
                   onClick={openPdf}
                   className="bg-gradient-to-r from-cyan-500 text- to-teal-500 text-white px-4 py-2 border-none rounded-md ml-8"
                   href="#"
@@ -125,27 +135,18 @@ export default function Home() {
               Join me down below and lets get kraken!
             </p>
             <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
-              <Link href="https://github.com/saugat-15">
-                <AiFillGithub
-                  
-                  className="hover:text-teal-600"
-                />
+              <Link href="https://github.com/saugat-15" target="_blank">
+                <AiFillGithub className="hover:text-teal-600" />
               </Link>
-              <Link href="https://www.linkedin.com/in/saugat-giri-66011513b/">
-                <AiFillLinkedin
-                 
-                  className="hover:text-teal-600"
-                />
+              <Link href="https://www.linkedin.com/in/saugat-giri-66011513b/" target="_blank">
+                <AiFillLinkedin className="hover:text-teal-600" />
               </Link>
-              <Link href="https://www.instagram.com/saugat_giri/">
-                <AiFillInstagram
-                  
-                  className="hover:text-teal-600"
-                />
+              <Link href="https://www.instagram.com/saugat_giri/" target="_blank">
+                <AiFillInstagram className="hover:text-teal-600" />
               </Link>
             </div>
             <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
-              <Image alt ="" src={deved} layout="fill" objectFit="cover" />
+              <Image alt="" src={deved} layout="fill" objectFit="cover" />
             </div>
           </div>
         </section>
@@ -223,106 +224,112 @@ export default function Home() {
           <div>
             <h3 className="text-3xl py-1 dark:text-white ">Portfolio</h3>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
-            Check out some of my projects:
+              Check out some of my projects:
             </p>
           </div>
           <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
             <div className="basis-1/3 flex-1 ">
-              <Link href="https://moviefightapi.netlify.app/">
+              <Link href="https://moviefightapi.netlify.app/" target="_blank">
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  
                   layout="responsive"
                   src={movieFight}
                 />
               </Link>
-              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">Tech stack: OMDB API | HTML | CSS | JS</p>
+              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Tech stack: OMDB API | HTML | CSS | JS
+              </p>
             </div>
             <div className="basis-1/3 flex-1">
-              <Link href="https://ecommerce-node.netlify.app/">
+              <Link href="https://ecommerce-node.netlify.app/" target="_blank">
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  
                   layout="responsive"
                   src={ecommerce}
                 />
               </Link>
-              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">Tech stack: REACT/REDUX | NODE.JS | MONGO | CLOUDINARY | MULTER | BCRYPT/JWT</p>
+              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Tech stack: REACT/REDUX | NODE.JS | MONGO | CLOUDINARY | MULTER
+                | BCRYPT/JWT
+              </p>
             </div>
             <div className="basis-1/3 flex-1">
-              <Link href="https://matterjslib.netlify.app/">
+              <Link href="https://matterjslib.netlify.app/" target="_blank">
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  
                   layout="responsive"
                   src={maze}
                 />
               </Link>
-              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">Tech stack: MATTER.JS (2D rigid body physics engine written in JavaScript) | HTML | CSS | JS</p>
+              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Tech stack: MATTER.JS (2D rigid body physics engine written in
+                JavaScript) | HTML | CSS | JS
+              </p>
             </div>
             <div className="basis-1/3 flex-1">
-              <Link href="https://projectedgeledger.netlify.app/#home">
+              <Link href="https://projectedgeledger.netlify.app/#home" target="_blank">
                 <Image
                   alt=""
                   className="rounded-lg object-cover"
-                  
                   layout="responsive"
                   src={ledger}
                 />
               </Link>
-              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">Tech stack: HTML | CSS | JS</p>
+              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Tech stack: HTML | CSS | JS
+              </p>
             </div>
             <div className="basis-1/3 flex-1">
-              <Link href="https://messagesharing.netlify.app/">
+              <Link href="https://messagesharing.netlify.app/" target="_blank">
                 <Image
                   alt=""
                   className="rounded-lg object-fit"
-                  
                   layout="responsive"
                   src={secret}
                 />
               </Link>
-              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">Tech stack: Encryption | HTML | CSS | JS</p>
+              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Tech stack: Encryption | HTML | CSS | JS
+              </p>
             </div>
             <div className="basis-1/3 flex-1">
-              <Link href="https://unsplash.com/@saugat151">
+              <Link href="https://unsplash.com/@saugat151" target="_blank">
                 <Image
                   alt=""
                   className="rounded-lg object-fit"
-                  
                   layout="responsive"
                   src={unsplash}
                 />
               </Link>
-              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">Photography Profile</p>
+              <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
+                Photography Profile
+              </p>
             </div>
           </div>
         </section>
 
         {/* Contact me */}
         <section>
-        <div className="text-center shadow-xl p-10 rounded-xl dark:text-white flex-1">
-              {/* <Image alt="" src={code} width={130} height={170} /> */}
-              <h3 className="text-3xl font-medium p-8 ">
-                Reach Out to me..
-              </h3>
-              
-              <div className="flex justify-center gap-4">
-                <AiOutlineMail className="mt-1" />
-                <p className="mb-4"> saugatgiri15@gmail.com</p>
-              </div>
-              <div className="flex justify-center gap-4">
-                <AiOutlinePhone className="mt-1" />
-                <p className="mb-4">+61452654702</p>
-              </div>
-              <div className="flex justify-center gap-4">
-                <AiFillHome className="mt-1" />
-                <p className="mb-4">Melbourne, VIC</p>
-              </div>
+          <div className="text-center shadow-xl p-10 rounded-xl dark:text-white flex-1">
+            {/* <Image alt="" src={code} width={130} height={170} /> */}
+            <h3 className="text-3xl font-medium p-8 ">Reach Out to me..</h3>
+
+            <div className="flex justify-center gap-4">
+              <AiOutlineMail className="mt-1" />
+              <p className="mb-4"> saugatgiri15@gmail.com</p>
             </div>
+            <div className="flex justify-center gap-4">
+              <AiOutlinePhone className="mt-1" />
+              <p className="mb-4">+61452654702</p>
+            </div>
+            <div className="flex justify-center gap-4">
+              <AiFillHome className="mt-1" />
+              <p className="mb-4">Melbourne, VIC</p>
+            </div>
+          </div>
         </section>
       </main>
     </div>
