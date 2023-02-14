@@ -42,7 +42,7 @@ export default function Home() {
   const openPdf = () => {
     setShowPdf(true);
     window.open(
-      "https://drive.google.com/file/d/1V7gTJ62d3kSnF1o6k7R6uDswBAr6ICpQ/view?usp=sharing",
+      "https://drive.google.com/file/d/1_yASmkSobTMJ0PGUyh1NYmecLWAJ_Rf6/view?usp=sharing",
       "_blank"
     );
   };
