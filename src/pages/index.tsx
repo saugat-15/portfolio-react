@@ -35,14 +35,14 @@ import Link from "next/link";
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
   const [showPdf, setShowPdf] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
 
   const colors = ["#ba7672", "#ccc", "#6cf", "#eba13a"];
 
   const openPdf = () => {
     setShowPdf(true);
     window.open(
-      "https://drive.google.com/file/d/1_yASmkSobTMJ0PGUyh1NYmecLWAJ_Rf6/view?usp=sharing",
+      "https://drive.google.com/file/d/1BPO6lABML53X7KLxhLHRvnQownf-P2L0/view?usp=sharing",
       "_blank"
     );
   };
