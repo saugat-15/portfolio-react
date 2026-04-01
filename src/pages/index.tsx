@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useEffect, useState, type ReactNode } from 'react';
+import { memo, useEffect, useState, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ExperienceSectionLottie } from '@/components/ExperienceSectionLottie';
 import { MotionBackground } from '@/components/MotionBackground';
+import { PortfolioNav } from '@/components/PortfolioNav';
 import {
   BrainCircuit,
   Check,
@@ -21,13 +22,9 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Menu,
-  Moon,
   Phone,
   Send,
   Server,
-  Sun,
-  X,
 } from 'lucide-react';
 
 const RESUME_URL =
@@ -193,13 +190,6 @@ const STORY_CERTS: StoryCert[] = [
   },
 ];
 
-function readThemeFromDocument(): 'light' | 'dark' {
-  if (typeof document === 'undefined') return 'dark';
-  return document.documentElement.getAttribute('data-theme') === 'light'
-    ? 'light'
-    : 'dark';
-}
-
 /**
  * Framer's useReducedMotion reads `null` on the server but can be `true` immediately
  * on the client, which mismatches SSR markup (e.g. conditional hero Lottie) and can
@@ -223,41 +213,17 @@ function useMotionConfig() {
   return { reduceMotion, enter, inView };
 }
 
-function applyThemeToDocument(theme: 'light' | 'dark') {
-  document.documentElement.setAttribute('data-theme', theme);
-  try {
-    localStorage.setItem('portfolio-theme', theme);
-  } catch {
-    /* ignore */
-  }
-}
-
 const LINKEDIN_URL =
   'https://www.linkedin.com/in/saugat-giri-66011513b/' as const;
 const GITHUB_PROFILE_URL = 'https://github.com/saugat-15' as const;
 
-export default function Home() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+function Home() {
   const [activeExperienceIndex, setActiveExperienceIndex] = useState(0);
   const activeExperience = EXPERIENCE[activeExperienceIndex];
   const { reduceMotion, enter, inView } = useMotionConfig();
 
   const hiddenY = { opacity: 0, y: 26 };
   const showY = { opacity: 1, y: 0 };
-
-  useEffect(() => {
-    const next = readThemeFromDocument();
-    setTheme(next);
-  }, []);
-
-  const toggleTheme = () => {
-    setTheme((previous) => {
-      const next = previous === 'light' ? 'dark' : 'light';
-      applyThemeToDocument(next);
-      return next;
-    });
-  };
 
   useEffect(() => {
     const cards = document.querySelectorAll<HTMLElement>('.pf-project-card');
@@ -279,33 +245,6 @@ export default function Home() {
       cleanups.push(() => card.removeEventListener('mousemove', fn));
     });
     return () => cleanups.forEach((c) => c());
-  }, []);
-
-  useEffect(() => {
-    const anchors = document.querySelectorAll<HTMLAnchorElement>(
-      'a[href^="#"]'
-    );
-    const handlers: Array<{ el: HTMLAnchorElement; fn: (e: Event) => void }> =
-      [];
-    anchors.forEach((a) => {
-      const fn = (e: Event) => {
-        e.preventDefault();
-        setIsMobileMenuOpen(false);
-        const href = a.getAttribute('href');
-        if (!href || href === '#') {
-          document.getElementById('home')?.scrollIntoView({
-            behavior: 'smooth',
-          });
-          return;
-        }
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-      };
-      a.addEventListener('click', fn);
-      handlers.push({ el: a, fn });
-    });
-    return () => {
-      handlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
-    };
   }, []);
 
   const view = {
@@ -370,10 +309,6 @@ export default function Home() {
         <meta name="twitter:title" content={SEO_TITLE} />
         <meta name="twitter:description" content={SEO_DESCRIPTION} />
         {ogImage ? <meta name="twitter:image" content={ogImage} /> : null}
-        <meta
-          name="theme-color"
-          content={theme === 'dark' ? '#0a090e' : '#f3f0fa'}
-        />
         <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
@@ -385,122 +320,7 @@ export default function Home() {
 
       <div className="portfolio-page">
         <ExperienceSectionLottie reduceMotion={reduceMotion} />
-        <motion.header
-          className="pf-nav"
-          initial={reduceMotion ? false : { opacity: 0, y: -18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={enter(0)}
-        >
-          <div className="pf-wrap">
-            <div className="pf-nav-inner">
-              <a href="#home" className="pf-logo">
-                SG<span>.</span>
-              </a>
-              <button
-                type="button"
-                className="pf-nav-menu-toggle"
-                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={isMobileMenuOpen}
-                aria-controls="pf-mobile-menu"
-                onClick={() => setIsMobileMenuOpen((previous) => !previous)}
-              >
-                {isMobileMenuOpen ? (
-                  <X strokeWidth={2} aria-hidden />
-                ) : (
-                  <Menu strokeWidth={2} aria-hidden />
-                )}
-              </button>
-              <nav aria-label="Primary">
-                <ul className="pf-nav-links">
-                  <li>
-                    <a href="#home">Home</a>
-                  </li>
-                  <li>
-                    <a href="#projects">Projects</a>
-                  </li>
-                  <li>
-                    <a href="#experience">Experience</a>
-                  </li>
-                  <li>
-                    <a href="#skills">Skills</a>
-                  </li>
-                  <li>
-                    <a href="#about">About</a>
-                  </li>
-                </ul>
-              </nav>
-              <div className="pf-nav-actions">
-                <button
-                  type="button"
-                  className="pf-theme-toggle"
-                  onClick={toggleTheme}
-                  aria-label={
-                    theme === 'light'
-                      ? 'Switch to dark mode'
-                      : 'Switch to light mode'
-                  }
-                >
-                  {theme === 'light' ? (
-                    <Moon strokeWidth={2} aria-hidden />
-                  ) : (
-                    <Sun strokeWidth={2} aria-hidden />
-                  )}
-                </button>
-                <a
-                  href={RESUME_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pf-nav-resume"
-                >
-                  Resume
-                </a>
-                <a href="#contact" className="pf-nav-cta">
-                  Contact
-                </a>
-              </div>
-            </div>
-            <div
-              id="pf-mobile-menu"
-              className={`pf-mobile-menu${isMobileMenuOpen ? ' is-open' : ''}`}
-            >
-              <nav aria-label="Primary mobile">
-                <ul className="pf-mobile-nav-links">
-                  <li>
-                    <a href="#home">Home</a>
-                  </li>
-                  <li>
-                    <a href="#projects">Projects</a>
-                  </li>
-                  <li>
-                    <a href="#experience">Experience</a>
-                  </li>
-                  <li>
-                    <a href="#skills">Skills</a>
-                  </li>
-                  <li>
-                    <a href="#about">About</a>
-                  </li>
-                  <li>
-                    <a href="#contact">Contact</a>
-                  </li>
-                </ul>
-              </nav>
-              <div className="pf-mobile-menu-actions">
-                <a
-                  href={RESUME_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pf-nav-resume"
-                >
-                  Resume
-                </a>
-                <a href="#contact" className="pf-nav-cta">
-                  Contact
-                </a>
-              </div>
-            </div>
-          </div>
-        </motion.header>
+        <PortfolioNav />
 
         <section className="pf-hero" id="home">
           <MotionBackground />
@@ -1053,8 +873,15 @@ export default function Home() {
                 transition={inView(0)}
                 whileHover={reduceMotion ? undefined : { rotate: -1, scale: 1.02 }}
               >
-                <div className="pf-avatar" aria-hidden>
-                  SG
+                <div className="pf-avatar">
+                  <Image
+                    src="/profilephoto.jpg"
+                    alt="Saugat Giri"
+                    fill
+                    sizes="(max-width: 768px) 160px, 174px"
+                    className="pf-avatar-img"
+                    priority={false}
+                  />
                 </div>
                 <div className="pf-avatar-badge">
                   <MapPin strokeWidth={2} aria-hidden />
@@ -1073,7 +900,7 @@ export default function Home() {
                   and data pipelines.
                 </motion.p>
                 <motion.p {...view} transition={inView(0.16)}>
-                  AWS Certified Developer with multiple cloud certifications, and
+                  AWS/Azure Certified Developer with multiple cloud certifications, and
                   hands-on experience building GenAI features using LLMs and
                   Bedrock. I bring a balance of product thinking and strong
                   engineering fundamentals.
@@ -1335,3 +1162,5 @@ export default function Home() {
     </>
   );
 }
+
+export default memo(Home);

@@ -430,6 +430,28 @@ html[data-theme="dark"] .portfolio-page {
   }
 }
 
+/* Mobile: cheaper compositing — full blur + animated mesh fight the GPU */
+@media (max-width: 839px) {
+  .portfolio-page .pf-nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .portfolio-page .pf-project-card,
+  .portfolio-page .pf-skill-block {
+    --liquid-blur: blur(14px) saturate(1.35);
+  }
+
+  .portfolio-page .pf-hero-motion__mesh,
+  .portfolio-page .pf-hero-motion__grid,
+  .portfolio-page .pf-hero-motion__aurora,
+  .portfolio-page .pf-hero-motion__orb--1,
+  .portfolio-page .pf-hero-motion__orb--2,
+  .portfolio-page .pf-hero-motion__orb--3 {
+    animation: none !important;
+  }
+}
+
 /* ---------- hero ---------- */
 .portfolio-page .pf-hero {
   position: relative;
@@ -1880,19 +1902,20 @@ html[data-theme="dark"] .portfolio-page .pf-skill-block:hover {
 }
 
 .portfolio-page .pf-avatar {
+  position: relative;
   width: 160px;
   height: 160px;
   border-radius: 28px;
-  background: linear-gradient(145deg, var(--accent) 0%, #9333ea 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 2.75rem;
-  font-weight: 800;
-  color: #fff;
+  overflow: hidden;
+  flex-shrink: 0;
   box-shadow: var(--shadow);
   transform: rotate(-3deg);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.portfolio-page .pf-avatar-img {
+  object-fit: cover;
+  object-position: center top;
 }
 
 .portfolio-page .pf-avatar-badge {
