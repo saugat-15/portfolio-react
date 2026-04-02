@@ -27,8 +27,7 @@ import {
   Server,
 } from 'lucide-react';
 
-const RESUME_URL =
-  'https://drive.google.com/file/d/1zYCYjn621oMFMYRedMUnxLBoWCqssWGa/view?usp=sharing';
+const RESUME_URL = '/Saugat_Giri_Soft_Dev_Resume.pdf' as const;
 
 const PROJECT_BEDROCK_RAG_THUMB =
   'https://cloudybarz.com/wp-content/uploads/2025/05/ChatGPT-Image-May-16-2025-10_19_25-PM-1170x780.jpg';
