@@ -1402,8 +1402,25 @@ html[data-theme="dark"] .portfolio-page .pf-project-card:hover {
   background: linear-gradient(145deg, #064e3b 0%, #0d9488 42%, #5eead4 100%);
 }
 
-.portfolio-page .pf-vis-quiz {
-  background: linear-gradient(145deg, #4c1d95 0%, #7c2d12 35%, #f97316 100%);
+.portfolio-page .pf-vis-saathi {
+  background: linear-gradient(145deg, #0d9488 0%, #0e7490 38%, #5eead4 100%);
+}
+
+.portfolio-page .pf-project-card--highlight {
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--liquid-edge));
+}
+
+html[data-theme="dark"] .portfolio-page .pf-project-card--highlight {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.portfolio-page .pf-project-card--highlight:hover {
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--liquid-edge));
+}
+
+.portfolio-page .pf-project-num--featured {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .portfolio-page .pf-project-thumb {
@@ -1507,6 +1524,19 @@ html[data-theme="dark"] .portfolio-page .pf-project-card:hover {
   color: var(--text-muted);
   flex: 1;
   margin-bottom: 1rem;
+}
+
+.portfolio-page .pf-project-body .pf-project-lede {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.portfolio-page .pf-project-lede--compact {
+  font-size: 0.96rem;
+  line-height: 1.52;
+  margin-bottom: 0.85rem;
 }
 
 .portfolio-page .pf-project-tags {

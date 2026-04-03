@@ -39,9 +39,12 @@ const PROJECT_INCIDENT_TRACKER_THUMB =
 const PROJECT_WEBSOCKETS_THUMB =
   'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80';
 
-/** Thumbnail: study & Q&A (Unsplash) */
-const PROJECT_QUIZ_APP_THUMB =
-  'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80';
+/** Thumbnail: language / interpretation (Unsplash) — CCL Saathi */
+const PROJECT_CCL_SAATHI_THUMB =
+  'https://images.unsplash.com/photo-1706403615881-d83dc2067c5d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
+const PROJECT_CCL_SAATHI_GITHUB =
+  'https://github.com/saugat-15/cclsaathi' as const;
 
 /** Canonical site origin (no trailing slash). Override with NEXT_PUBLIC_SITE_URL on Vercel when using a custom domain. */
 const SITE_URL = (
@@ -461,16 +464,84 @@ function Home() {
         <section className="pf-section" id="projects">
           <div className="pf-wrap">
             <motion.p className="pf-section-label" {...view} transition={inView(0)}>
-              Selected work
+              Featured &amp; more
             </motion.p>
             <motion.h2 {...view} transition={inView(0.06)}>
               Projects
             </motion.h2>
             <div className="pf-projects-grid">
               <motion.article
-                className="pf-project-card"
+                className="pf-project-card pf-project-card--highlight"
                 {...view}
                 transition={inView(0)}
+                whileHover={reduceMotion ? undefined : { y: -6 }}
+              >
+                <div className="pf-project-visual">
+                  <motion.div
+                    className="pf-project-visual-inner pf-vis-saathi"
+                    whileHover={
+                      reduceMotion ? undefined : { scale: 1.02 }
+                    }
+                    transition={{ duration: 0.35, ease: EASE_SMOOTH }}
+                  >
+                    <Image
+                      className="pf-project-thumb"
+                      src={PROJECT_CCL_SAATHI_THUMB}
+                      alt="Language and interpretation themed photograph for CCLSaathi"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 496px"
+                      priority
+                    />
+                    <div className="pf-browser-dots" aria-hidden>
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                    <div className="pf-vis-shine" aria-hidden />
+                  </motion.div>
+                </div>
+                <div className="pf-project-body">
+                  <div className="pf-project-top">
+                    <span className="pf-project-num pf-project-num--featured">
+                      Main highlight
+                    </span>
+                    <a
+                      href={PROJECT_CCL_SAATHI_GITHUB}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pf-project-link"
+                      aria-label="CCLSaathi on GitHub"
+                    >
+                      <ExternalLink strokeWidth={2} aria-hidden />
+                    </a>
+                  </div>
+                  <h3>CCLSaathi 🇳🇵</h3>
+                  <p className="pf-project-lede pf-project-lede--compact">
+                    NAATI CCL practice for Nepali-first candidates (5 PR
+                    points): interpret exam-style dialogue, then get AI feedback.
+                    Audio is <strong>segmented with FFmpeg</strong>, transcribed
+                    with <strong>OpenAI Whisper</strong> (EN + NP), and scored
+                    with <strong>Claude</strong>. Next.js on Amplify;
+                    Cognito · AppSync · DynamoDB · S3 · Lambda · Stripe.
+                  </p>
+                  <div className="pf-project-tags">
+                    <span>OpenAI Whisper</span>
+                    <span>FFmpeg</span>
+                    <span>Claude</span>
+                    <span>Next.js</span>
+                    <span>AWS Amplify</span>
+                    <span>AppSync</span>
+                    <span>DynamoDB</span>
+                    <span>Lambda</span>
+                    <span>Stripe</span>
+                  </div>
+                </div>
+              </motion.article>
+
+              <motion.article
+                className="pf-project-card"
+                {...view}
+                transition={inView(0.08)}
                 whileHover={reduceMotion ? undefined : { y: -6 }}
               >
                 <div className="pf-project-visual">
@@ -500,7 +571,7 @@ function Home() {
                 </div>
                 <div className="pf-project-body">
                   <div className="pf-project-top">
-                    <span className="pf-project-num">01</span>
+                    <span className="pf-project-num">02</span>
                     <a
                       href="https://github.com/saugat-15/bedrock-rag-chatbot"
                       target="_blank"
@@ -530,7 +601,7 @@ function Home() {
               <motion.article
                 className="pf-project-card"
                 {...view}
-                transition={inView(0.1)}
+                transition={inView(0.12)}
                 whileHover={reduceMotion ? undefined : { y: -6 }}
               >
                 <div className="pf-project-visual">
@@ -560,7 +631,7 @@ function Home() {
                 </div>
                 <div className="pf-project-body">
                   <div className="pf-project-top">
-                    <span className="pf-project-num">02</span>
+                    <span className="pf-project-num">03</span>
                     <a
                       href="https://github.com/saugat-15/aws-amplify-incident-tracker"
                       target="_blank"
@@ -619,7 +690,7 @@ function Home() {
                 </div>
                 <div className="pf-project-body">
                   <div className="pf-project-top">
-                    <span className="pf-project-num">03</span>
+                    <span className="pf-project-num">04</span>
                     <a
                       href="https://github.com/saugat-15/websockets"
                       target="_blank"
@@ -641,63 +712,6 @@ function Home() {
                     <span>Socket.io</span>
                     <span>JavaScript</span>
                     <span>Real-time</span>
-                  </div>
-                </div>
-              </motion.article>
-
-              <motion.article
-                className="pf-project-card"
-                {...view}
-                transition={inView(0.18)}
-                whileHover={reduceMotion ? undefined : { y: -6 }}
-              >
-                <div className="pf-project-visual">
-                  <motion.div
-                    className="pf-project-visual-inner pf-vis-quiz"
-                    whileHover={
-                      reduceMotion ? undefined : { scale: 1.02 }
-                    }
-                    transition={{ duration: 0.35, ease: EASE_SMOOTH }}
-                  >
-                    <Image
-                      className="pf-project-thumb"
-                      src={PROJECT_QUIZ_APP_THUMB}
-                      alt="React quiz app preview"
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 496px"
-                      loading="lazy"
-                    />
-                    <div className="pf-browser-dots" aria-hidden>
-                      <span />
-                      <span />
-                      <span />
-                    </div>
-                    <div className="pf-vis-shine" aria-hidden />
-                  </motion.div>
-                </div>
-                <div className="pf-project-body">
-                  <div className="pf-project-top">
-                    <span className="pf-project-num">04</span>
-                    <a
-                      href="https://github.com/saugat-15/React-Quiz-App---Advanced-Concepts-practice"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pf-project-link"
-                      aria-label="React Quiz App on GitHub"
-                    >
-                      <ExternalLink strokeWidth={2} aria-hidden />
-                    </a>
-                  </div>
-                  <h3>React Quiz App</h3>
-                  <p>
-                    Vite + React quiz UI built to practice advanced ref usage,
-                    side effects, and a modular component structure.
-                  </p>
-                  <div className="pf-project-tags">
-                    <span>React</span>
-                    <span>Vite</span>
-                    <span>Hooks</span>
-                    <span>Refs</span>
                   </div>
                 </div>
               </motion.article>
