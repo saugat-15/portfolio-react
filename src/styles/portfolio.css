@@ -65,6 +65,26 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color-scheme: light;
+  /* Purple dot cursor (matches --accent); inherit on descendants so links/buttons match */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='7' fill='%236347ff'/%3E%3C/svg%3E")
+      12 12,
+    auto;
+}
+
+.portfolio-page * {
+  cursor: inherit;
+}
+
+.portfolio-page input[type="text"],
+.portfolio-page input[type="email"],
+.portfolio-page input[type="search"],
+.portfolio-page input[type="url"],
+.portfolio-page input[type="tel"],
+.portfolio-page input[type="password"],
+.portfolio-page input[type="number"],
+.portfolio-page textarea,
+.portfolio-page [contenteditable="true"] {
+  cursor: text;
 }
 
 /* Main chrome stacks above viewport-fixed ambient Lottie */
@@ -108,6 +128,9 @@ html[data-theme="dark"] .portfolio-page {
   --liquid-edge-outer: rgba(0, 0, 0, 0.4);
   --liquid-blur: blur(44px) saturate(1.7);
   color-scheme: dark;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='7' fill='%239485ff'/%3E%3C/svg%3E")
+      12 12,
+    auto;
 }
 
 .portfolio-page a {
@@ -167,7 +190,6 @@ html[data-theme="dark"] .portfolio-page {
   border-radius: 999px;
   background: var(--nav-resume-bg);
   color: var(--text-muted);
-  cursor: pointer;
   transition:
     color 0.2s,
     border-color 0.2s,
@@ -268,7 +290,6 @@ html[data-theme="dark"] .portfolio-page {
   border-radius: 999px;
   background: var(--nav-resume-bg);
   color: var(--text-muted);
-  cursor: pointer;
   flex-shrink: 0;
   transition:
     color 0.2s,
@@ -1473,7 +1494,26 @@ html[data-theme="dark"] .portfolio-page .pf-project-card--highlight {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 0.75rem;
   margin-bottom: 0.75rem;
+}
+
+.portfolio-page .pf-project-top-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.portfolio-page .pf-project-status-pill {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: var(--accent-subtle);
+  color: var(--accent-dark);
+  letter-spacing: 0.02em;
 }
 
 .portfolio-page .pf-project-num {
@@ -1689,7 +1729,6 @@ html[data-theme="dark"] .portfolio-page .pf-exp-lottie-bg__inner {
   font-weight: 600;
   text-align: left;
   color: var(--text-soft);
-  cursor: pointer;
   position: relative;
   transition: color 0.2s ease;
 }

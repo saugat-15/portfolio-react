@@ -44,7 +44,7 @@ const PROJECT_CCL_SAATHI_THUMB =
   'https://images.unsplash.com/photo-1706403615881-d83dc2067c5d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
 const PROJECT_CCL_SAATHI_GITHUB =
-  'https://github.com/saugat-15/cclsaathi' as const;
+  'https://github.com/saugat-15/ccl-saathi' as const;
 
 /** Canonical site origin (no trailing slash). Override with NEXT_PUBLIC_SITE_URL on Vercel when using a custom domain. */
 const SITE_URL = (
@@ -502,9 +502,14 @@ function Home() {
                 </div>
                 <div className="pf-project-body">
                   <div className="pf-project-top">
-                    <span className="pf-project-num pf-project-num--featured">
-                      Main highlight
-                    </span>
+                    <div className="pf-project-top-meta">
+                      <span className="pf-project-num pf-project-num--featured">
+                        Main highlight
+                      </span>
+                      <span className="pf-project-status-pill">
+                        Actively in development
+                      </span>
+                    </div>
                     <a
                       href={PROJECT_CCL_SAATHI_GITHUB}
                       target="_blank"
