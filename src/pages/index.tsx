@@ -1013,7 +1013,7 @@ function Home() {
                             Amazon Web Services
                           </span>
                           <span className="pf-certs-lane-tagline">
-                            Orange thread — serverless &amp; AI on AWS
+                            Serverless, CI/CD, &amp; AI on AWS
                           </span>
                         </div>
                       </div>
@@ -1057,7 +1057,7 @@ function Home() {
                             Microsoft Azure
                           </span>
                           <span className="pf-certs-lane-tagline">
-                            Azure blue — apps, data &amp; AI fundamentals
+                            Azure apps, data &amp; AI fundamentals
                           </span>
                         </div>
                       </div>
