@@ -29,15 +29,7 @@ import {
 
 const RESUME_URL = '/Saugat_Giri_Soft_Dev_Resume.pdf' as const;
 
-const PROJECT_BEDROCK_RAG_THUMB =
-  'https://cloudybarz.com/wp-content/uploads/2025/05/ChatGPT-Image-May-16-2025-10_19_25-PM-1170x780.jpg';
-
-const PROJECT_INCIDENT_TRACKER_THUMB =
-  'https://i.ytimg.com/vi/6e8ft-Ugz_I/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAeGlwETlY9r7vy4Jvs0Z5SBAT71w';
-
-/** Thumbnail: team & live collaboration (Unsplash) */
-const PROJECT_WEBSOCKETS_THUMB =
-  'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80';
+const PROJECT_INCIDENT_TRACKER_THUMB = '/incident-tracker.png';
 
 /** Thumbnail: language / interpretation (Unsplash) — CCL Saathi */
 const PROJECT_CCL_SAATHI_THUMB =
@@ -526,13 +518,11 @@ function Home() {
                     points): interpret exam-style dialogue, then get AI feedback.
                     Audio is <strong>segmented with FFmpeg</strong>, transcribed
                     with <strong>OpenAI Whisper</strong> (EN + NP), and scored
-                    with <strong>Claude</strong>. Next.js on Amplify;
-                    Cognito · AppSync · DynamoDB · S3 · Lambda · Stripe.
+                    with <strong>OpenAI</strong>
                   </p>
                   <div className="pf-project-tags">
                     <span>OpenAI Whisper</span>
                     <span>FFmpeg</span>
-                    <span>Claude</span>
                     <span>Next.js</span>
                     <span>AWS Amplify</span>
                     <span>AppSync</span>
@@ -559,10 +549,9 @@ function Home() {
                   >
                     <Image
                       className="pf-project-thumb"
-                      src={PROJECT_BEDROCK_RAG_THUMB}
-                      alt="Bedrock RAG Chatbot preview"
+                      src="/matchPulse.png"
+                      alt="MatchPulse real-time tennis dashboard preview"
                       fill
-                      unoptimized
                       sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 496px"
                       loading="lazy"
                     />
@@ -575,30 +564,38 @@ function Home() {
                   </motion.div>
                 </div>
                 <div className="pf-project-body">
-                  <div className="pf-project-top">
-                    <span className="pf-project-num">02</span>
+                  <div className="pf-project-heading-row">
+                    <h3>MatchPulse</h3>
                     <a
-                      href="https://github.com/saugat-15/bedrock-rag-chatbot"
+                      href="https://match-pulse-delta.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="pf-project-link"
-                      aria-label="Bedrock RAG Chatbot on GitHub"
+                      aria-label="MatchPulse live demo"
                     >
                       <ExternalLink strokeWidth={2} aria-hidden />
                     </a>
                   </div>
-                  <h3>Bedrock RAG Chatbot</h3>
                   <p>
-                    Full-stack RAG on AWS Bedrock with PDF uploads and
-                    context-aware Q&amp;A — strong accuracy on domain queries,
-                    React UI, Kendra-backed search, sub-2s responses.
+                    Real-time tennis match analysis dashboard built with Next.js
+                    and Server-Sent Events. Uses a quota-friendly live data
+                    strategy (snapshot bootstrap + SSE stream simulation) with
+                    graceful fallbacks. GitHub:{' '}
+                    <a
+                      href="https://github.com/saugat-15/MatchPulse"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      saugat-15/MatchPulse
+                    </a>
+                    .
                   </p>
                   <div className="pf-project-tags">
-                    <span>AWS Bedrock</span>
-                    <span>React</span>
-                    <span>Lambda</span>
-                    <span>Kendra</span>
-                    <span>RAG</span>
+                    <span>Next.js</span>
+                    <span>TypeScript</span>
+                    <span>Server-Sent Events</span>
+                    <span>App Router</span>
+                    <span>Tailwind CSS</span>
                   </div>
                 </div>
               </motion.article>
@@ -635,8 +632,8 @@ function Home() {
                   </motion.div>
                 </div>
                 <div className="pf-project-body">
-                  <div className="pf-project-top">
-                    <span className="pf-project-num">03</span>
+                  <div className="pf-project-heading-row">
+                    <h3>AWS Amplify Incident Tracker</h3>
                     <a
                       href="https://github.com/saugat-15/aws-amplify-incident-tracker"
                       target="_blank"
@@ -647,79 +644,25 @@ function Home() {
                       <ExternalLink strokeWidth={2} aria-hidden />
                     </a>
                   </div>
-                  <h3>AWS Amplify Incident Tracker</h3>
                   <p>
                     Real-time incident workflow cutting report-to-resolution time
                     ~40%. AppSync GraphQL + DynamoDB for hundreds of concurrent
                     users, Cognito RBAC.
                   </p>
                   <div className="pf-project-tags">
-                    <span>Amplify</span>
+                    <span>Cognito</span>
                     <span>AppSync</span>
                     <span>GraphQL</span>
-                    <span>Cognito</span>
-                    <span>DynamoDB</span>
+                    <span>Lambda</span>
+                    <span>S3</span>
+                    <span>API Gateway</span>
+                    <span>IAM</span>
+                    <span>CloudFormation</span>
+                    <span>CDK</span>
                   </div>
                 </div>
               </motion.article>
 
-              <motion.article
-                className="pf-project-card"
-                {...view}
-                transition={inView(0.14)}
-                whileHover={reduceMotion ? undefined : { y: -6 }}
-              >
-                <div className="pf-project-visual">
-                  <motion.div
-                    className="pf-project-visual-inner pf-vis-socket"
-                    whileHover={
-                      reduceMotion ? undefined : { scale: 1.02 }
-                    }
-                    transition={{ duration: 0.35, ease: EASE_SMOOTH }}
-                  >
-                    <Image
-                      className="pf-project-thumb"
-                      src={PROJECT_WEBSOCKETS_THUMB}
-                      alt="Real-time chat with WebSockets preview"
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 496px"
-                      loading="lazy"
-                    />
-                    <div className="pf-browser-dots" aria-hidden>
-                      <span />
-                      <span />
-                      <span />
-                    </div>
-                    <div className="pf-vis-shine" aria-hidden />
-                  </motion.div>
-                </div>
-                <div className="pf-project-body">
-                  <div className="pf-project-top">
-                    <span className="pf-project-num">04</span>
-                    <a
-                      href="https://github.com/saugat-15/websockets"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pf-project-link"
-                      aria-label="WebSockets chat on GitHub"
-                    >
-                      <ExternalLink strokeWidth={2} aria-hidden />
-                    </a>
-                  </div>
-                  <h3>Real-Time Chat (Socket.io)</h3>
-                  <p>
-                    Practice project: live messaging with Node.js and Socket.io —
-                    rooms, events, and bidirectional updates in the browser.
-                    Deployed demo on Netlify.
-                  </p>
-                  <div className="pf-project-tags">
-                    <span>Node.js</span>
-                    <span>Socket.io</span>
-                    <span>JavaScript</span>
-                    <span>Real-time</span>
-                  </div>
-                </div>
-              </motion.article>
             </div>
           </div>
         </section>

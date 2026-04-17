@@ -66,7 +66,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color-scheme: light;
   /* Purple dot cursor (matches --accent); inherit on descendants so links/buttons match */
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='7' fill='%236347ff'/%3E%3C/svg%3E")
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='7' fill='%236347ff'/%3E%3C/svg%3E")
       12 12,
     auto;
 }
@@ -128,7 +129,8 @@ html[data-theme="dark"] .portfolio-page {
   --liquid-edge-outer: rgba(0, 0, 0, 0.4);
   --liquid-blur: blur(44px) saturate(1.7);
   color-scheme: dark;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='7' fill='%239485ff'/%3E%3C/svg%3E")
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='7' fill='%239485ff'/%3E%3C/svg%3E")
       12 12,
     auto;
 }
@@ -1261,9 +1263,22 @@ html[data-theme="dark"] .portfolio-page .pf-hero-cred-badge--azure {
 
 /* ---------- projects ---------- */
 .portfolio-page .pf-projects-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .portfolio-page .pf-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .portfolio-page .pf-projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .portfolio-page .pf-project-card {
@@ -1272,6 +1287,9 @@ html[data-theme="dark"] .portfolio-page .pf-hero-cred-badge--azure {
   border-radius: var(--radius);
   overflow: hidden;
   display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  align-items: stretch;
   gap: 0;
   border: 1px solid color-mix(in srgb, var(--liquid-edge) 55%, var(--border));
   background: linear-gradient(
@@ -1293,10 +1311,9 @@ html[data-theme="dark"] .portfolio-page .pf-hero-cred-badge--azure {
     border-color 0.35s ease;
 }
 
-@media (min-width: 900px) {
+@media (max-width: 767px) {
   .portfolio-page .pf-project-card {
-    grid-template-columns: 1.05fr 1fr;
-    align-items: stretch;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1395,20 +1412,38 @@ html[data-theme="dark"] .portfolio-page .pf-project-card:hover {
 
 .portfolio-page .pf-project-visual {
   position: relative;
-  min-height: 200px;
-  padding: 1.25rem;
+  min-height: 0;
+  padding: 1rem;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .portfolio-page .pf-project-visual-inner {
   width: 100%;
+  height: auto;
+  min-height: 0;
   aspect-ratio: 16 / 10;
-  max-height: 220px;
+  max-height: 280px;
   border-radius: var(--radius-sm);
   position: relative;
   overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 767px) {
+  .portfolio-page .pf-project-visual {
+    min-height: 200px;
+    align-items: flex-end;
+    padding: 1.25rem;
+  }
+
+  .portfolio-page .pf-project-visual-inner {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    max-height: 220px;
+  }
 }
 
 .portfolio-page .pf-vis-rag {
@@ -1483,7 +1518,7 @@ html[data-theme="dark"] .portfolio-page .pf-project-card--highlight {
 }
 
 .portfolio-page .pf-project-body {
-  padding: 1.75rem 1.75rem 1.5rem;
+  padding: 1.1rem 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1526,7 +1561,14 @@ html[data-theme="dark"] .portfolio-page .pf-project-card--highlight {
 
 .portfolio-page .pf-project-link {
   width: 40px;
+  min-width: 40px;
+  max-width: 40px;
   height: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  padding: 0;
   border-radius: 50%;
   border: 1px solid var(--border);
   display: flex;
@@ -1559,6 +1601,18 @@ html[data-theme="dark"] .portfolio-page .pf-project-card--highlight {
   margin-bottom: 0.65rem;
 }
 
+.portfolio-page .pf-project-heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.portfolio-page .pf-project-heading-row h3 {
+  margin-bottom: 0;
+}
+
 .portfolio-page .pf-project-body p {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -1585,6 +1639,18 @@ html[data-theme="dark"] .portfolio-page .pf-project-card--highlight {
   gap: 0.35rem;
   padding-top: 0.25rem;
   border-top: 1px solid var(--border);
+}
+
+.portfolio-page .pf-project-stack-label {
+  width: 100%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  background: transparent !important;
+  padding: 0 0 0.2rem 0 !important;
+  border-radius: 0 !important;
 }
 
 .portfolio-page .pf-project-tags span {
