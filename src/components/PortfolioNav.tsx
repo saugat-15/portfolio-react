@@ -10,7 +10,7 @@ import { useTheme } from '@/context/ThemeContext';
 
 const EASE_SMOOTH = [0.22, 1, 0.36, 1] as const;
 
-const RESUME_URL = '/Saugat_Giri_Soft_Dev_Resume.pdf' as const;
+const RESUME_URL = '/saugat_giri_fullstack.pdf' as const;
 
 function PortfolioNavInner() {
   const { theme, toggleTheme } = useTheme();

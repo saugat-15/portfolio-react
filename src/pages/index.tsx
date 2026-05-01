@@ -27,13 +27,13 @@ import {
   Server,
 } from 'lucide-react';
 
-const RESUME_URL = '/Saugat_Giri_Soft_Dev_Resume.pdf' as const;
+const RESUME_URL = '/saugat_giri_fullstack.pdf' as const;
 
 const PROJECT_INCIDENT_TRACKER_THUMB = '/incident-tracker.png';
 
 /** Thumbnail: language / interpretation (Unsplash) — CCL Saathi */
 const PROJECT_CCL_SAATHI_THUMB =
-  'https://images.unsplash.com/photo-1706403615881-d83dc2067c5d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  '/cclsaathi.png';
 
 const PROJECT_CCL_SAATHI_GITHUB =
   'https://github.com/saugat-15/ccl-saathi' as const;
